@@ -26,7 +26,7 @@ class MessageController(application: Application) : AbstractDIController(applica
         }
         delete("/{id}") {
             val id = call.parameters.getOrFail("id")
-            val res = service.messageDelivered(id)
+            val res = id.toBigIntegerOrNull(16)?.let { service.messageDelivered(id) } ?: false
             call.respond(HttpStatusCode.OK, res)
         }
     }

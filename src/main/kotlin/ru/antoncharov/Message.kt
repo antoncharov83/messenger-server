@@ -13,7 +13,7 @@ import kotlinx.datetime.toLocalDateTime
 @Serializable
 data class Message(
     @SerialName("_id")
-    val id: @Contextual ObjectId = ObjectId(),
+    val id: @Contextual ObjectId? = null,
     val from: Long,
     val to: Long,
     @Serializable(with = LocalDateTimeIso8601Serializer::class)
