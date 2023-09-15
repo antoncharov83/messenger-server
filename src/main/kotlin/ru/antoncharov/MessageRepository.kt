@@ -1,6 +1,7 @@
 package ru.antoncharov
 
 import com.mongodb.client.result.DeleteResult
+import org.bson.types.ObjectId
 import org.litote.kmongo.coroutine.CoroutineDatabase
 import org.litote.kmongo.eq
 
@@ -15,7 +16,7 @@ class MessageRepository(
 
     suspend fun deleteMessage(pid: String): DeleteResult {
         val collection = database.getCollection<Message>()
-        return collection.deleteOneById(pid)
+        return collection.deleteOneById(ObjectId(pid))
     }
 
     private fun collection() =
