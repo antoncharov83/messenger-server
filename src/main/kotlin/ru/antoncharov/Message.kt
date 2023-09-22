@@ -14,8 +14,8 @@ import kotlinx.datetime.toLocalDateTime
 data class Message(
     @SerialName("_id")
     val id: @Contextual ObjectId? = null,
-    val from: Long,
-    val to: Long,
+    val from: String,
+    val to: String,
     @Serializable(with = LocalDateTimeIso8601Serializer::class)
     val createdAt: LocalDateTime = Clock.System.now().toLocalDateTime(TimeZone.UTC),
     val text: String)

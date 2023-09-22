@@ -10,8 +10,8 @@ class MessageRepository(
 ) {
     suspend fun saveMessage(message: Message) = collection().insertOne(message)
 
-    suspend fun getMessagesForId(id: Long): List<Message> {
-        return collection().find(Message::to eq id).toList()
+    suspend fun getMessagesForId(to: String): List<Message> {
+        return collection().find(Message::to eq to).toList()
     }
 
     suspend fun deleteMessage(pid: String): DeleteResult {

@@ -14,7 +14,7 @@ class MessageService(
         return SaveMessageResult(operationResult = OperationResult.SAVE_MESSAGE_FAILED)
     }
 
-    suspend fun getMessageFor(id: Long): List<MessageResponse> {
+    suspend fun getMessageFor(id: String): List<MessageResponse> {
         return repository.getMessagesForId(id).map { MessageResponse(id = it.id?.toHexString(), from = it.from, text = it.text) }
     }
 
@@ -36,4 +36,4 @@ data class SaveMessageResult(
 )
 
 @Serializable
-data class MessageResponse(val id: String?, val from: Long, val text: String)
+data class MessageResponse(val id: String?, val from: String, val text: String)

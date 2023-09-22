@@ -17,7 +17,7 @@ class MessageController(application: Application) : AbstractDIController(applica
 
     private fun Route.messages() {
         get("/{accountId}") {
-            val acc = call.parameters.getOrFail("accountId").toLong()
+            val acc = call.parameters.getOrFail("accountId")
             call.respond(HttpStatusCode.OK, service.getMessageFor(acc))
         }
         post<Message>("") { request ->
