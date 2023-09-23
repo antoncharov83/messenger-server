@@ -28,15 +28,15 @@ fun Application.configureSecurity() {
     }
     authentication {
         oauth("auth-oauth-google") {
-            urlProvider = { "http://localhost:8080/callback" }
+            urlProvider = { "https://jag-messenger-service.ew.r.appspot.com/callback" }
             providerLookup = {
                 OAuthServerSettings.OAuth2ServerSettings(
                     name = "google",
                     authorizeUrl = "https://accounts.google.com/o/oauth2/auth",
                     accessTokenUrl = "https://accounts.google.com/o/oauth2/token",
                     requestMethod = HttpMethod.Post,
-                    clientId = "610774454872-d9pqnumf10ddvjebf2n7jcr4q2fo1q5n.apps.googleusercontent.com",
-                    clientSecret = "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",
+                    clientId = "260952300891-rsbmn3p15h3v9qaa3mblsp83mmjchg85.apps.googleusercontent.com",
+                    clientSecret = "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",
                     defaultScopes = listOf("https://www.googleapis.com/auth/userinfo.profile"),
                     extraAuthParameters = listOf("access_type" to "offline"),
                 )
