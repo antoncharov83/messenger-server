@@ -26,10 +26,6 @@ fun Application.configureSecurity() {
         maxFrameSize = Long.MAX_VALUE
         masking = false
     }
-    install(Sessions) {
-        cookie<UserSession>("user_session")
-    }
-
     authentication {
         oauth("auth-oauth-google") {
             urlProvider = { "http://localhost:8080/callback" }

@@ -24,17 +24,18 @@ fun Application.configureSockets() {
     routing {
         webSocket("/online") {
             val token = call.request.headers["token"] ?: throw InvalidParameterException("token must not be null")
-            val userInfo: UserInfo = httpClient.get("https://www.googleapis.com/oauth2/v2/userinfo") {
+            val response = httpClient.get("https://www.googleapis.com/oauth2/v2/userinfo") {
                 headers {
                     append(HttpHeaders.Authorization, "Bearer $token")
                 }
-            }.body()
+            }
 
-            if (userInfo == null) {
+            if (response.status != HttpStatusCode.OK) {
                 close(CloseReason(CloseReason.Codes.NORMAL, "User not authorized"))
                 return@webSocket
             }
 
+            val userInfo = response.body<UserInfo>()
             val to = call.request.headers["to"] ?: throw InvalidParameterException("to must not be null")
 
             val currentConnection = Connection(this, userInfo.id)
