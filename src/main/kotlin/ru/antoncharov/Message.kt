@@ -19,3 +19,7 @@ data class Message(
     @Serializable(with = LocalDateTimeIso8601Serializer::class)
     val createdAt: LocalDateTime = Clock.System.now().toLocalDateTime(TimeZone.UTC),
     val text: String)
+
+data class MessageRequest(
+    val to: String,
+    val text: String)

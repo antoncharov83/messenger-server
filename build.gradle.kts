@@ -44,6 +44,7 @@ dependencies {
     implementation("org.kodein.di:kodein-di-framework-ktor-server-controller-jvm:7.20.2")
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.1")
     implementation("io.ktor:ktor-client-cio-jvm:2.3.4")
+    implementation("io.ktor:ktor-server-sessions-jvm:2.3.5")
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }
