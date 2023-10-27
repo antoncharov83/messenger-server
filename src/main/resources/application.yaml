@@ -1,8 +1,0 @@
-ktor:
-  application:
-    modules:
-      - ru.antoncharov.ApplicationKt.module
-  deployment:
-    port: 8080
-  http:
-    host = "0.0.0.0"

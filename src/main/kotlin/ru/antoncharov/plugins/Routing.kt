@@ -10,6 +10,7 @@ import io.ktor.util.*
 import org.kodein.di.instance
 import org.kodein.di.ktor.controller.controller
 import ru.antoncharov.MessageController
+import ru.antoncharov.UsersController
 
 fun Application.configureRouting() {
     install(Sessions) {
@@ -23,6 +24,7 @@ fun Application.configureRouting() {
     }
     routing {
         controller("/api/message") { MessageController(instance()) }
+        controller("/api/users") { UsersController(instance()) }
         get("/logout") {
             call.sessions.clear<UserSession>()
             call.respondRedirect("/login")

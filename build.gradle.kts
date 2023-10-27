@@ -37,6 +37,7 @@ dependencies {
     implementation("io.ktor:ktor-server-netty-jvm:$ktor_version")
     implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("io.ktor:ktor-server-config-yaml:$ktor_version")
+    implementation("org.keycloak:keycloak-admin-client:22.0.4")
     implementation("org.litote.kmongo:kmongo-coroutine:4.10.0")
     implementation("org.litote.kmongo:kmongo-id-serialization:4.10.0")
     implementation("org.mongodb:bson-kotlinx:4.10.1")

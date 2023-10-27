@@ -11,7 +11,7 @@ import java.security.InvalidParameterException
 import java.time.Duration
 import java.util.concurrent.ConcurrentHashMap
 
-class Connection(val session: DefaultWebSocketSession, val login: String)
+class Connection(val session: DefaultWebSocketSession)
 
 fun Application.configureSockets() {
     install(WebSockets) {
@@ -28,9 +28,7 @@ fun Application.configureSockets() {
 
     routing {
             webSocket("/online") {
-//                val userSession = call.sessions.get<UserSession>()
                 val username = JWT.decode(call.request.headers["token"]).getClaim("preferred_username").asString()
-
 
                 if (username == null){
                     close(CloseReason(CloseReason.Codes.NORMAL, "User not authorized"))
@@ -39,7 +37,7 @@ fun Application.configureSockets() {
 
                 val to = call.request.headers["to"] ?: throw InvalidParameterException("to must not be null")
 
-                val currentConnection = Connection(this, username)
+                val currentConnection = Connection(this)
                 connections[username] = currentConnection
 
                 try {
